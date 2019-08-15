@@ -18,7 +18,10 @@ class Statistics extends React.Component {
     render() {
         const {statistics} = this.state;
         return (
-           <Chart data={statistics}></Chart>
+            <div className="row">
+                <Chart data={statistics}></Chart>
+            </div>
+           
         )
     }
 }
