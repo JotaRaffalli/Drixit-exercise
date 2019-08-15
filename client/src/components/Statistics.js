@@ -4,7 +4,7 @@ class Statistics extends React.Component {
     constructor() {
         super();
         this.state = {
-            Statistics: []
+            statistics: []
         }
     }
 
@@ -18,7 +18,7 @@ class Statistics extends React.Component {
     render() {
         const {statistics} = this.state;
         return (
-            <Chart data={statistics}></Chart>
+           <Chart data={statistics}></Chart>
         )
     }
 }
