@@ -1,0 +1,23 @@
+{
+  "name": "drixit-exercise",
+  "version": "1.0.0",
+  "description": "Drixit exercise to simulate a FullStack app using Express and React",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./app/server.js",
+    "server": "nodemon ./app/server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\" "
+  },
+  "author": "Jose Luis Raffalli Adriani",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^4.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
