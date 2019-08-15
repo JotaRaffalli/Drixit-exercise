@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Chart from './Chart'
 class Statistics extends React.Component {
     constructor() {
         super();
@@ -16,8 +16,9 @@ class Statistics extends React.Component {
     }
 
     render() {
+        const {statistics} = this.state;
         return (
-            <h1>Hola Mundo</h1>
+            <Chart data={statistics}></Chart>
         )
     }
 }
