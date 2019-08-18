@@ -18,7 +18,7 @@ class Statistics extends React.Component {
     render() {
         const {statistics} = this.state;
         return (
-            <div className="row">
+            <div className="container-flex">
                 <Chart data={statistics}></Chart>
             </div>
            
