@@ -1,5 +1,5 @@
 import React from 'react';
-import Chart from './Chart'
+import ChartWithTable from './ChartWithTable'
 class Statistics extends React.Component {
     constructor() {
         super();
@@ -19,7 +19,7 @@ class Statistics extends React.Component {
         const {statistics} = this.state;
         return (
             <div className="container-flex">
-                <Chart data={statistics}></Chart>
+                <ChartWithTable data={statistics}></ChartWithTable>
             </div>
            
         )
