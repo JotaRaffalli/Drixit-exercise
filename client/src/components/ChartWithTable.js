@@ -58,7 +58,8 @@ export default class ChartWithTable extends React.Component {
     });
   }
 
-  filterBars() {
+  async filterBars() {
+    await this.resetView()
     let { bar1, bar2, bar3, selected } = this.state;
     const selectedNames = []
     for(const key in selected) {
@@ -293,10 +294,7 @@ export default class ChartWithTable extends React.Component {
           <div className="container-flex mx-auto">
             <span>
               {this.state.toolTip1.x
-                ? this.state.toolTip1.x + "'s data is "
-                : "Please hover chart to see specific data: "}{" "}
-              {this.state.toolTip1.y} , {this.state.toolTip2.y} and{" "}
-              {this.state.toolTip3.y} respectively
+                ? `${this.state.toolTip1.x}'s data is ${this.state.toolTip1.y} , ${this.state.toolTip2.y}, ${this.state.toolTip3.y} respectively`: "Please hover chart to see specific data."}
             </span>
           </div>
         </div>

@@ -39,7 +39,7 @@ app.get('/statistics', async (req, res) => {
 // Configures frontend build assets and resolves with index.html that react creates
 app.use(express.static('public'));
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+    res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
 })
 
 // Lifts the server up and uses specified port or 4000 as default
