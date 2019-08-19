@@ -34,6 +34,7 @@ export default class ChartWithTable extends React.Component {
     this.toggleRow = this.toggleRow.bind(this);
   }
 
+  // Put selected items in an object with the state of true or false
   toggleRow(name) {
     const newSelected = Object.assign({}, this.state.selected);
     newSelected[name] = !this.state.selected[name];
@@ -43,6 +44,7 @@ export default class ChartWithTable extends React.Component {
     });
   }
 
+  // Not used in this exercise
   toggleSelectAll() {
     let newSelected = {};
 
@@ -57,11 +59,15 @@ export default class ChartWithTable extends React.Component {
       selectAll: this.state.selectAll === 0 ? 1 : 0
     });
   }
-
+  /* 
+    Filter bars after selection of items
+    Is async wait for bar reset for then filter from the array the selected items
+  */
   async filterBars() {
     await this.resetView()
     let { bar1, bar2, bar3, selected } = this.state;
     const selectedNames = []
+    // selected is a single object so we have to loop
     for(const key in selected) {
       if (selected.hasOwnProperty(key))
         if (selected[key]) selectedNames.push(key)
@@ -69,9 +75,9 @@ export default class ChartWithTable extends React.Component {
     let b1 = []
     let b2 = []
     let b3 = [];
-
+    // We filter items one by one using the Filter high order function in javascript
     for (const key of selectedNames) {
-      b1.push(bar1.filter(b => b.x === key)[0]);
+      b1.push(bar1.filter(b => b.x === key)[0]); // then we push into the new bar, the item filtered from the bars
       b2.push(bar2.filter(b => b.x === key)[0]);
       b3.push(bar3.filter(b => b.x === key)[0]);
     }
@@ -85,7 +91,7 @@ export default class ChartWithTable extends React.Component {
       labelData3: []
     });
   }
-
+// Resets the oroginal bars with the data from props
   resetView() {
     const {
       bar1,
@@ -104,7 +110,7 @@ export default class ChartWithTable extends React.Component {
       labelData3,
     });
   }
-
+  // Updates the state after getting the data in props
   componentDidUpdate(prevProps) {
     const { data } = this.props;
     const {
@@ -115,6 +121,7 @@ export default class ChartWithTable extends React.Component {
       labelData2,
       labelData3
     } = this.prepareData(data);
+    // Only update if it changes to avoid loop and side effects
     if (this.props.data !== prevProps.data) {
       this.setState({
         bar1,
@@ -127,6 +134,7 @@ export default class ChartWithTable extends React.Component {
       });
     }
   }
+  // Prepares the data for react-vis to render the chart as desired
   prepareData(data) {
     const bar1 = data.map(d => {
       return { x: d.name, y: d.bar1 };
@@ -172,6 +180,7 @@ export default class ChartWithTable extends React.Component {
       labelData3
     } = this.state;
     const BarSeries = useCanvas ? VerticalBarSeriesCanvas : VerticalBarSeries;
+    // Creates table elements for react-table library
     const columns = [
       {
         id: "checkbox",

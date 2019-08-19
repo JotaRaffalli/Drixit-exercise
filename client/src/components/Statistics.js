@@ -8,6 +8,7 @@ class Statistics extends React.Component {
         }
     }
 
+    // Get data form server endpoint
     componentDidMount() {
         fetch('/statistics')
         .then(res => res.json())
@@ -16,6 +17,8 @@ class Statistics extends React.Component {
     }
 
     render() {
+        // Pass the data in props to the opther component
+        // TODO add a state handler to separate in two components chart and table
         const {statistics} = this.state;
         return (
             <div className="container-flex">
