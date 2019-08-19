@@ -2,7 +2,7 @@
  Simple app that renders data in a multi bar chart. It uses Express js to serve data and React to render it.
  
  See an online preview 
- I'm an inline-style link](https://drixit-exercise.herokuapp.com/)
+ [at heroku](https://drixit-exercise.herokuapp.com/)
  
  ### Packages used
  * concurrently
