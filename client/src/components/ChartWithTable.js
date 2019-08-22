@@ -35,13 +35,14 @@ export default class ChartWithTable extends React.Component {
   }
 
   // Put selected items in an object with the state of true or false
-  toggleRow(name) {
+   toggleRow(name) {
     const newSelected = Object.assign({}, this.state.selected);
     newSelected[name] = !this.state.selected[name];
-    this.setState({
+     this.setState({
       selected: newSelected,
       selectAll: 2
     });
+     this.filterBars()
   }
 
   // Not used in this exercise
@@ -308,8 +309,6 @@ export default class ChartWithTable extends React.Component {
           </div>
         </div>
         <div className="my-2 container">
-        <button className="btn btn-primary mx-1 my-2" disabled={Object.entries(this.state.selected).length === 0} onClick={()=>this.filterBars()}>Filter</button>
-        <button className="btn btn-outline-warning mx-1 my-2" onClick={()=>this.resetView()}>Reset</button>
           <ReactTable
             data={this.state.data}
             columns={columns}
